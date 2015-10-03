@@ -49,9 +49,14 @@ for img_loc in img_locations:
 # In this case, we imagine that template number 1 is the image taken by the user.
 # We then match this template against our knowledge database (templates 1 to 3).
 # Since we match an image against itself, the result should be obvious.
-test_img = res_img[2]
+# You can try changing the test_img, and you will see that we always find the template back
+test_img = res_img[0]
 templates = res_img
 tmpl_match, max_res = find_match(test_img, templates)
 
 print "The best template is : " + str(tmpl_match) + " with correlation value " + str(max_res)
 show_binary_images(res_img)
+
+# Current limitations :
+# You can't match images against templates if the templates are bigger than the image
+# You have to find a way to crop the image properly to avoid having the table too. This can be done by the user, or automated later.
